@@ -2,8 +2,7 @@ import React from 'react'
 import { View, ScrollView, SafeAreaView, Image, Text} from 'react-native';
 import {Header} from 'react-native-elements'
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
-import InstagramCard from '../InstagramCard';
-
+import InstagramCard from '../components/InstagramCard';
 
 
 const HomeTab = () => {
@@ -43,6 +42,7 @@ const HomeTab = () => {
                                     paddingEnd: 5
                                 }}
                             >
+                              
                                 <Image
                                     style={{
                                         marginHorizontal: 5,
@@ -52,7 +52,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/1.jpg')}
+                                    source={require('../../assets/Stories/1.jpg')}
                                 />
                                 <Image
                                     style={{
@@ -63,7 +63,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/2.jpg')}
+                                    source={require('../../assets/Stories/2.jpg')}
                                 />
                                 <Image
                                     style={{
@@ -74,7 +74,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/6.png')}
+                                    source={require('../../assets/Stories/3.jpg')}
                                 />
                                 <Image
                                     style={{
@@ -85,7 +85,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/3.jpg')}
+                                    source={require('../../assets/Stories/4.jpg')}
                                 />
                                 <Image
                                     style={{
@@ -96,7 +96,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/4.jpg')}
+                                    source={require('../../assets/Stories/5.jpg')}
                                 />
                                 <Image
                                     style={{
@@ -107,7 +107,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/5.jpg')}
+                                    source={require('../../assets/Stories/6.jpg')}
                                 />
                                 <Image
                                     style={{
@@ -118,18 +118,7 @@ const HomeTab = () => {
                                         height: 80,
                                         borderRadius: 40
                                     }}
-                                    source={require('../../../assets/Stories/6.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../../assets/Stories/7.jpg')}
+                                    source={require('../../assets/Stories/7.jpg')}
                                 />
                             </ScrollView>
                         </View>

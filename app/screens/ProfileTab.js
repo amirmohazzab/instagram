@@ -1,64 +1,69 @@
 import React, {useState} from 'react'
-import { View, Image, Text, SafeAreaView, ScrollView} from 'react-native';
+import { View, Image, Text, SafeAreaView, ScrollView, Pressable} from 'react-native';
 import {Button} from '@rneui/themed';
-import { Header, Icon } from '@rneui/themed';
+import {Icon} from 'react-native-elements';
+import { Header } from '@rneui/themed';
 import { AntDesign, FontAwesome, MaterialIcons, Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Constans from 'expo-constants'
 import {Dimensions} from 'react-native';
-import InstagramCard from '../InstagramCard';
+import InstagramCard from '../components/InstagramCard';
+import ProfileBookmark from '../Profile/ProfileBookmark';
 
 
-const images = [
-    require('../../../assets/feed/1.jpg'),
-    require('../../../assets/feed/3.jpg'),
-    require('../../../assets/feed/4.jpg'),
-    require('../../../assets/feed/5.jpg'),
-    require('../../../assets/feed/6.jpg'),
-    require('../../../assets/feed/7.jpg'),
-    require('../../../assets/feed/8.jpg'),
-    require('../../../assets/feed/9.jpg'),
-    require('../../../assets/feed/10.jpg'),
-    require('../../../assets/feed/11.jpg'),
-    require('../../../assets/feed/1.jpg'),
-    require('../../../assets/feed/3.jpg'),
-    require('../../../assets/feed/4.jpg'),
-];
 
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 
-const ProfileTab = () => {
+const images = [
+    require('../../assets/feed/1.jpg'),
+    require('../../assets/feed/3.jpg'),
+    require('../../assets/feed/4.jpg'),
+    require('../../assets/feed/5.jpg'),
+    require('../../assets/feed/6.jpg'),
+    require('../../assets/feed/7.jpg'),
+    require('../../assets/feed/8.jpg'),
+    require('../../assets/feed/9.jpg'),
+    require('../../assets/feed/10.jpg'),
+    require('../../assets/feed/11.jpg'),
+    require('../../assets/feed/1.jpg'),
+    require('../../assets/feed/3.jpg'),
+    require('../../assets/feed/4.jpg'),
+];
+
+renderSectionOne = () => {
+    return images.map((image, index) => {
+        return (
+            <View
+                key={index}
+                style={[
+                    { width: screenWidth / 3 },
+                    { height: screenWidth / 3 },
+                    { marginBottom: 2 },
+                    index % 3 !== 0
+                        ? { paddingLeft: 2 }
+                        : { paddingLeft: 0 }
+                ]}
+            >
+                <Image
+                    source={image}
+                    style={{
+                        flex: 1,
+                        width: undefined,
+                        height: undefined
+                    }}
+                />
+            </View>
+        );
+    });
+};
+
+const ProfileTab = ({navigation}) => {
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const handleClicked = index => setActiveIndex(index);
+    const [show, setShow] = useState(false);
 
-    renderSectionOne = () => {
-        return images.map((image, index) => {
-            return (
-                <View
-                    key={index}
-                    style={[
-                        { width: screenWidth / 3 },
-                        { height: screenWidth / 3 },
-                        { marginBottom: 2 },
-                        index % 3 !== 0
-                            ? { paddingLeft: 2 }
-                            : { paddingLeft: 0 }
-                    ]}
-                >
-                    <Image
-                        source={image}
-                        style={{
-                            flex: 1,
-                            width: undefined,
-                            height: undefined
-                        }}
-                    />
-                </View>
-            );
-        });
-    };
+    const handleClicked = index => setActiveIndex(index);
 
 
     renderData = () => {
@@ -76,31 +81,78 @@ const ProfileTab = () => {
                     <InstagramCard imageSource="img3" likes="400" />
                 </View>
             );
+        } else if (activeIndex === 2) {
+            return (
+                <View style={{flex: 1}}>
+                    <ProfileBookmark />
+                </View>
+            )
         }
     };
 
+const renderBoxAccount = () => {
+    if (show) {
+        return (
+            <>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "90%", paddingVertical: 5}}>
+                    <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: 0.4*screenWidth}}>
+                        <Image
+                            style={{ borderWidth: 2, width: 60, height: 60, borderRadius: 30}}
+                            source={require('../../assets/posts/Thumbnail-2.jpg')}
+                        />
+                        <Text style={{fontSize:14}}> Varzesh3</Text>                
+                    </View>
+                    <View >
+                        <MaterialIcons name="check-circle" size={24} color="dodgerblue" />
+                    </View>
+                </View>
+                <View style={{backgroundColor: "#ccc", height: 1, width: "100%"}}/> 
+                <View style={{flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', width: "80%", paddingVertical: 10}}>
+                    <View >
+                        <MaterialIcons name="add" size={24} color="black" />
+                    </View>
+                    <View style={{marginLeft: 30}}>
+                        <Text style={{fontSize:14}}> Add Account </Text>
+                    </View>
+                </View>
+                <View style={{backgroundColor: "#ccc", height: 1, width: "100%", marginTop: 5}}/> 
+            </>
+        ) 
+    } else {
+        return null
+    }
+}
+
     return ( 
-        <View style={{flex: 1, justifyContent: "center", alignItems: "center",  }}>
+        <View style={{flex: 1, justifyContent: "center", alignItems: "center"  }}>
             <View 
                 style={{flexDirection: 'row', justifyContent: 'space-between', 
                         marginTop: Constans.statusBarHeight, height: 50, alignItems: 'center', backgroundColor: 'white'}}
             >
-                <View style={{flexDirection: 'row', flex: 1.5, alignItems: "center"}}>
-                        <Text style={{fontSize: 20}}> ah_mohazab2023 </Text>
-                        <MaterialIcons name="arrow-drop-down" size={30} color="black" />
-                </View>
+                        <View style={{flexDirection: 'row', flex: 1.5, alignItems: "center"}}>
+                            <Text style={{fontSize: 20}}> ah_mohazab2023 </Text>
+                            <Icon 
+                                name="arrow-drop-down"
+                                type="MaterialIcon"
+                                color="black"
+                                onPress={() => setShow(!show)}
+                            />
+                        </View>
                 <View style={{flex: 0.5, flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
                         <Entypo name="back-in-time" size={28} color="black" />
-                        <Ionicons name="person-add" size={28} color="black" />
-                        <Entypo name="dots-three-vertical" size={28} color="black" /> 
+                        <Ionicons name="person-add" size={28} color="black" onPress={() => navigation.navigate('SuggestTopTab')}/>
+                        <Entypo name="dots-three-vertical" size={28} color="black" onPress={() => navigation.navigate('Setting')} /> 
                 </View>
             </View>
+
+            {renderBoxAccount()}
+
             <View style={{flex: 1, justifyContent: "flex-start", alignItems: "center", width: screenWidth}}>
                 <View style={{paddingTop: 10}}>
                     <View style={{flexDirection: 'row'}}>
                         <View style={{alignItems: 'center', width: 0.25*screenWidth, marginLeft: 10}}>
                             <Image 
-                                source={require('../../../assets/photo.jpg')}
+                                source={require('../../assets/photo.jpg')}
                                 style={{height: 100, width: 100, borderRadius: 50, marginLeft: 10}}
                             />
                         </View>
@@ -129,6 +181,7 @@ const ProfileTab = () => {
                                                   alignItems: 'center', justifyContent: 'center',
                                                   borderWidth: 1, borderColor: 'dark', marginHorizontal: 20
                                     }}
+                                    onPress={() => navigation.navigate('Edit')}
                                 />
                             </View>
                         </View>
@@ -168,21 +221,10 @@ const ProfileTab = () => {
                             onPress={() => handleClicked(2)}
                             buttonStyle={{backgroundColor:  'transparent'}}
                             icon={{
-                                name: 'people', 
-                                type: 'Ionicons', 
-                                size: 30, 
-                                color: activeIndex === 2 ? 'black' : 'grey'
-                            }}                            
-                        />
-                        <Button 
-                            active = {activeIndex === 3}
-                            onPress={() => handleClicked(3)}
-                            buttonStyle={{backgroundColor:  'transparent'}}
-                            icon={{
                                 name: 'bookmark-outline', 
                                 type: 'Ionicons', 
                                 size: 30, 
-                                color: activeIndex === 3 ? 'black' : 'grey'
+                                color: activeIndex === 2 ? 'black' : 'grey'
                             }}
                         />
                     </View>

@@ -1,7 +1,8 @@
 import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {HomeTab, ProfileTab} from './navigatorTabs';
 import { Foundation, Ionicons} from '@expo/vector-icons'
+import {HomeTab} from './screens';
+import ProfileNavigator from './Profile/ProfileNavigator';
 
 
 const Tab = createBottomTabNavigator();
@@ -10,7 +11,7 @@ const MainScreen = () => {
 
     return ( 
         <Tab.Navigator
-            initialRouteName="Home"
+            initialRouteName="Profile"
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: "#000",
@@ -32,7 +33,7 @@ const MainScreen = () => {
                 }}
             />
             <Tab.Screen 
-                name="Profile" component={ProfileTab} 
+                name="Profile" component={ProfileNavigator} 
                 options={{
                     
                     tabBarIcon: ({ color, size }) => (
