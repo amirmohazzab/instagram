@@ -81,7 +81,6 @@ const Suggest = () => {
             <Pressable style={{padding: 20, backgroundColor: 'dodgerblue', width: 0.95*screenWidth, marginTop: 10}} >
                 <Text style={{fontSize: 20, textAlign: 'center', color: 'white'}}> Follow All </Text>
             </Pressable>
-            <View style={{backgroundColor: "#ccc", height: 1, width: "100%", marginTop: 5}}/> 
 
 
             <FlatList
@@ -108,7 +107,6 @@ const Suggest = () => {
                                 <MaterialIcons name="more-vert" size={24} color="black" />
                             </View>
                         </View>
-                        <View style={{backgroundColor: "#ccc", height: 1, width: "100%", marginTop: 5}}/> 
                     </>
                 )}
             />

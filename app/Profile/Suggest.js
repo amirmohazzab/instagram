@@ -88,7 +88,6 @@ const Suggest = () => {
                     />
                 </View>
             </View>
-            <View style={{backgroundColor: "#ccc", height: 1, width: "100%", marginTop: 5}}/> 
 
             <FlatList
                 data={SuggestedItems}
@@ -114,7 +113,7 @@ const Suggest = () => {
                                 <MaterialIcons name="more-vert" size={24} color="black" />
                             </View>
                         </View>
-                        <View style={{backgroundColor: "#ccc", height: 1, width: "100%", marginTop: 5}}/> 
+                    
                     </>
                 )}
             />
