@@ -93,21 +93,20 @@ const ProfileTab = ({navigation}) => {
 const renderBoxAccount = () => {
     if (show) {
         return (
-            <>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "90%", paddingVertical: 5}}>
+            <View style={{justifyContent: "center", alignItems: "flex-start", backgroundColor: "#FFF", zIndex: 5, position: "absolute", width: screenWidth}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "90%", paddingVertical: 5, borderBottomWidth: 1, borderColor: "#ccc", paddingLeft: 20}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: 0.4*screenWidth}}>
                         <Image
                             style={{ borderWidth: 2, width: 60, height: 60, borderRadius: 30}}
-                            source={require('../../assets/posts/Thumbnail-2.jpg')}
+                            source={require('../../assets/photo.jpg')}
                         />
-                        <Text style={{fontSize:14}}> Varzesh3</Text>                
+                        <Text style={{fontSize:16, marginLeft: 10}}> ah_mohazab2023 </Text>                
                     </View>
                     <View >
                         <MaterialIcons name="check-circle" size={24} color="dodgerblue" />
                     </View>
                 </View>
-                <View style={{backgroundColor: "#ccc", height: 1, width: "100%"}}/> 
-                <View style={{flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', width: "80%", paddingVertical: 10}}>
+                <View style={{flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderColor: "#ccc", paddingLeft: 40}}>
                     <View >
                         <MaterialIcons name="add" size={24} color="black" />
                     </View>
@@ -115,8 +114,8 @@ const renderBoxAccount = () => {
                         <Text style={{fontSize:14}}> Add Account </Text>
                     </View>
                 </View>
-                <View style={{backgroundColor: "#ccc", height: 1, width: "100%", marginTop: 5}}/> 
-            </>
+                
+            </View>
         ) 
     } else {
         return null
@@ -144,11 +143,10 @@ const renderBoxAccount = () => {
                         <Entypo name="dots-three-vertical" size={28} color="black" onPress={() => navigation.navigate('Setting')} /> 
                 </View>
             </View>
-
-            {renderBoxAccount()}
-
             <View style={{flex: 1, justifyContent: "flex-start", alignItems: "center", width: screenWidth}}>
+            
                 <View style={{paddingTop: 10}}>
+                {renderBoxAccount()}
                     <View style={{flexDirection: 'row'}}>
                         <View style={{alignItems: 'center', width: 0.25*screenWidth, marginLeft: 10}}>
                             <Image 
