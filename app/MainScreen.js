@@ -5,6 +5,7 @@ import {HomeTab} from './screens';
 import ProfileNavigator from './Profile/ProfileNavigator';
 import LikeTabNavigator from './Like/LikeTabNavigator'
 import addMediaBottomTabNavigator from './addMedia/AddMediaBottomTabNavigator'
+import SearchNavigator from './search/SearchNavigator'
 
 
 const Tab = createBottomTabNavigator();
@@ -33,6 +34,14 @@ const MainScreen = () => {
                 options={{
                     tabBarIcon: ({ color, size }) => (
                       <Foundation name="home" color={color} size={size} />
+                    ),
+                }}
+            />
+            <Tab.Screen 
+                name="Search" component={SearchNavigator} 
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name="ios-search" color={color} size={size} />
                     ),
                 }}
             />

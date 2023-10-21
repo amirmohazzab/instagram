@@ -59,7 +59,7 @@ const ProfileBookmark = () => {
     <TabView
       selectedIndex={selectedIndex}
       onSelect={(selectedIndex) => setSelectedIndex(selectedIndex)}
-      tabBarStyle={{height: 50, }}
+      tabBarStyle={{height: 50}}
       indicatorStyle={{backgroundColor: 'black' }}          
     >
       <Tab 

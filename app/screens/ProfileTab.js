@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
-import { View, Image, Text, SafeAreaView, ScrollView, Pressable} from 'react-native';
+import { View, Image, Text, SafeAreaView, ScrollView} from 'react-native';
 import {Button} from '@rneui/themed';
 import {Icon} from 'react-native-elements';
-import { Header } from '@rneui/themed';
-import { AntDesign, FontAwesome, MaterialIcons, Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import Constans from 'expo-constants'
 import {Dimensions} from 'react-native';
 import InstagramCard from '../components/InstagramCard';

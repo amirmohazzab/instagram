@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, ScrollView, SafeAreaView, Image, Text} from 'react-native';
+import { View, ScrollView, SafeAreaView, Text} from 'react-native';
 import {Header} from 'react-native-elements'
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import InstagramCard from '../components/InstagramCard';
+import ImageStories from '../components/ImageStories';
 
 
 const HomeTab = () => {
@@ -32,18 +33,19 @@ const HomeTab = () => {
                                 </Text>
                             </View>
                         </View>
-                        <View style={{ flex: 3 }}>
+                        <View style={{ flex: 3, justifyContent: "center", alignItems: "center"}}>
                             <ScrollView
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
                                 contentContainerStyle={{
                                     alignItems: 'center',
                                     paddingStart: 5,
-                                    paddingEnd: 5
+                                    paddingEnd: 5,
+                                    
                                 }}
                             >
-                              
-                                <Image
+                                <ImageStories />
+                                {/* <Image
                                     style={{
                                         marginHorizontal: 5,
                                         borderColor: 'pink',
@@ -119,7 +121,7 @@ const HomeTab = () => {
                                         borderRadius: 40
                                     }}
                                     source={require('../../assets/Stories/7.jpg')}
-                                />
+                                /> */}
                             </ScrollView>
                         </View>
                     </View>
