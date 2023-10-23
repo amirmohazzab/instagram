@@ -6,13 +6,13 @@ import InstagramCard from '../components/InstagramCard';
 import ImageStories from '../components/ImageStories';
 
 
-const HomeTab = () => {
+const HomeTab = ({navigation}) => {
     return ( 
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
             <Header
-                leftComponent={ <AntDesign name="camera" size={30} color="black" /> }
+                leftComponent={ <AntDesign name="camera" size={30} color="black" onPress={() => {navigation.navigate('Camera')}} /> }
                 centerComponent={{ text: 'Instagram', style: { color: '#000', fontSize: 20, fontWeight: "bold"} }}
-                rightComponent={ <FontAwesome name="send" size={24} color="black" /> }
+                rightComponent={ <FontAwesome name="send" size={24} color="black" onPress={() => navigation.navigate('Direct')} /> }
                 containerStyle={{
                     backgroundColor: 'white',
                     justifyContent: 'space-around',
@@ -45,83 +45,7 @@ const HomeTab = () => {
                                 }}
                             >
                                 <ImageStories />
-                                {/* <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/1.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/2.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/3.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/4.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/5.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/6.jpg')}
-                                />
-                                <Image
-                                    style={{
-                                        marginHorizontal: 5,
-                                        borderColor: 'pink',
-                                        borderWidth: 2,
-                                        width: 80,
-                                        height: 80,
-                                        borderRadius: 40
-                                    }}
-                                    source={require('../../assets/Stories/7.jpg')}
-                                /> */}
+                               
                             </ScrollView>
                         </View>
                     </View>

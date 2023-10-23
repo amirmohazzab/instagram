@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Foundation, Ionicons, AntDesign} from '@expo/vector-icons'
-import {HomeTab} from './screens';
 import ProfileNavigator from './Profile/ProfileNavigator';
 import LikeTabNavigator from './Like/LikeTabNavigator'
 import addMediaBottomTabNavigator from './addMedia/AddMediaBottomTabNavigator'
 import SearchNavigator from './search/SearchNavigator'
+import HomeNavigator from './Home/HomeNavigator';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,7 +18,7 @@ const MainScreen = () => {
 
     return ( 
         <Tab.Navigator
-            initialRouteName="Profile"
+            initialRouteName="Home"
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: "#000",
@@ -30,7 +30,7 @@ const MainScreen = () => {
             }}
         >
             <Tab.Screen 
-                name="Home" component={HomeTab} 
+                name="Home" component={HomeNavigator} 
                 options={{
                     tabBarIcon: ({ color, size }) => (
                       <Foundation name="home" color={color} size={size} />

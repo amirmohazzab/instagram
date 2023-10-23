@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {View, Text, Image, ScrollView} from 'react-native'
 import {Header} from 'react-native-elements'
 import { Input} from '@rneui/themed';
-import {FontAwesome, Entypo} from '@expo/vector-icons'
+import {FontAwesome, Entypo} from 'react-native-vector-icons'
 import {Picker} from '@react-native-picker/picker';
 import { Dimensions} from 'react-native';
 

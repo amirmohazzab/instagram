@@ -17,16 +17,23 @@ const InstagramCard = ({imageSource, likes}) => {
 
     return ( 
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-            <View style={{width: "100%", backgroundColor: "grey", height: 1, marginBottom: 20}} />
-            <View style={{flexDirection: "row", alignItems: "center", marginBottom: 15, justifyContent: "flex-start", marginLeft: -180}}>
-                <Image 
-                    source={require('../../assets/photo.jpg')}
-                    style={{height: 80, width: 80, borderRadius: 40}}
-                />
-                <View>
-                    <Text> Amir Mohazzab </Text>
-                    <Text> Oct 10, 2023</Text>
+            <View style={{width: "100%", backgroundColor: "grey", height: 1, marginBottom: 5}} />
+            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", padding: 10}}>
+                <View style={{flexDirection: "row", alignItems: "center", justifyContent: "flex-start"}}>
+                    <Image 
+                        source={require('../../assets/photo.jpg')}
+                        style={{height: 80, width: 80, borderRadius: 40}}
+                    />
+                    <View>
+                        <Text> Amir Mohazzab </Text>
+                        <Text> Oct 10, 2023</Text>
+                    </View> 
                 </View>
+                <Button 
+                    buttonStyle={{backgroundColor:  'transparent'}}
+                    icon={{name: 'more-vertical', type: 'feather', size: 25, color: 'grey'}}
+                    onPress={() => {}}
+                />
             </View>
             <View style={{}}>
                 <Image 
