@@ -1,19 +1,16 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, TextInput} from 'react-native';
 import {Button} from 'react-native-elements';
 import {Dimensions} from 'react-native';
+import DoubleClick from 'rn-double-click'
 
 
 const {width: screenWidth} = Dimensions.get('window');
 
 
-const InstagramCard = ({imageSource, likes}) => {
+const InstagramCard = ({username, location, Thumbnail, image, likes, comments, caption, showModal, likePost, addLike, showComments}) => {
 
-    const images = {
-        img1: require('../../assets/1.jpg'),
-        img2: require('../../assets/2.jpg'),
-        img3: require('../../assets/3.jpg'),
-    };
+    const [hasFocus, setHasFocus] = useState(false);
 
     return ( 
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
@@ -21,32 +18,35 @@ const InstagramCard = ({imageSource, likes}) => {
             <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", padding: 10}}>
                 <View style={{flexDirection: "row", alignItems: "center", justifyContent: "flex-start"}}>
                     <Image 
-                        source={require('../../assets/photo.jpg')}
+                        source={Thumbnail}
                         style={{height: 80, width: 80, borderRadius: 40}}
                     />
                     <View>
-                        <Text> Amir Mohazzab </Text>
-                        <Text> Oct 10, 2023</Text>
+                        <Text> {username} </Text>
+                        <Text> {location} </Text>
                     </View> 
                 </View>
                 <Button 
                     buttonStyle={{backgroundColor:  'transparent'}}
                     icon={{name: 'more-vertical', type: 'feather', size: 25, color: 'grey'}}
-                    onPress={() => {}}
+                    onPress={showModal}
                 />
             </View>
-            <View style={{}}>
-                <Image 
-                    resizeMode='cover'
-                    source={images[imageSource]}
-                    style={{height: 200, width: 0.98*screenWidth}}
-                />
-            </View>
+            <DoubleClick onClick={addLike}>
+                <View style={{}}>
+                    <Image 
+                        resizeMode='cover'
+                        source={image}
+                        style={{height: 200, width: 0.98*screenWidth}}
+                    />
+                </View>
+            </DoubleClick>
             <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
                 <View style={{flexDirection: "row", alignItems: "center", flex: 3}}>
                     <Button 
                         buttonStyle={{backgroundColor:  'transparent'}}
-                        icon={{name: 'heart', type: 'feather', size: 25, color: 'black'}}
+                        icon={{name: likePost ? 'heart' : 'hearto', type: 'antdesign', size: 25, color: likePost ? "red" : "black"}}
+                        onPress={addLike}
                     />
                     <Button 
                         buttonStyle={{backgroundColor:  'transparent'}}
@@ -64,15 +64,49 @@ const InstagramCard = ({imageSource, likes}) => {
                     />
                 </View>
             </View>
-            <View style={{marginLeft: -295}}>
+            <View style={{flexDirection: "row", justifyContent: "flex-start", width: "100%", paddingLeft: 10, paddingBottom: 10}}>
                 <Text> {`${likes} Likes`} </Text>
             </View>
-            <View style={{paddingHorizontal: 15}}>
-                <Text style={{textAlign: 'justify'}}>
-                    <Text style={{fontWeight: "bold"}}> Amir </Text> 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi cursus eu orci sit amet ullamcorper. Nulla at dignissim sem, eu ullamcorper tellus. Vestibulum vel lobortis lorem, quis congue dolor. Aliquam aliquam turpis nec lectus imperdiet pharetra. Aliquam felis tortor, convallis vestibulum ligula nec, pellentesque porttitor enim. Morbi vitae justo in mi pretium aliquet. Aliquam erat volutpat.
-                </Text>
+            <View style={{ flexDirection: "row", marginBottom: 10, justifyContent: "flex-start", width: "100%", paddingLeft: 10}}>
+                <Text style={{fontWeight: "bold"}}> {username} </Text>
+                <Text> {caption} </Text>
             </View>
+            <View style={{alignItems: "flex-start", paddingVertical: 10, width: "90%", marginBottom: 10}}>
+                <Text note style={{color: "grey", fontSize: 16}} onPress={showComments} >View all {comments} comments</Text>
+            </View>
+            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", paddingHorizontal: 10}}> 
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                    <Image
+                        style={{
+                            marginHorizontal: 5,
+                            borderColor: 'pink',
+                            borderWidth: 2,
+                            width: 50,
+                            height: 50,
+                            borderRadius: 25
+                        }}
+                        source={image}
+                    />
+                    <TextInput
+                        placeholder="Add a comment ..."
+                        placeholderTextColor="#ccc"
+                        style={{fontSize:18, marginLeft: 10}}
+                        onFocus={() => setHasFocus(true)}
+                    />
+                </View>
+                <View>
+                {
+                  hasFocus ?
+                    <Text style={{color:'blue',fontSize:14,paddingRight:5}}>Post</Text>
+                    :null
+                }  
+                </View>   
+            </View>
+
+            
+          
+              
+
             <View style={{width: "100%", backgroundColor: "grey", height: 1, marginTop: 20}} />
         </View>
        

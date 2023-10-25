@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import { View, Image, Text, SafeAreaView, ScrollView} from 'react-native';
+import { View, Image, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import {Button} from '@rneui/themed';
 import {Icon} from 'react-native-elements';
 import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import Constans from 'expo-constants'
 import {Dimensions} from 'react-native';
+import Modal from 'react-native-modal'
 import InstagramCard from '../components/InstagramCard';
 import ProfileBookmark from '../Profile/ProfileBookmark';
-
-
+import { dataSet } from '../components/data';
 
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
@@ -64,6 +64,13 @@ const ProfileTab = ({navigation}) => {
 
     const handleClicked = index => setActiveIndex(index);
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [cardItems, setCardItems] = useState(dataSet);
+
+    const showModal = () => {
+        setIsModalVisible(!isModalVisible);
+    };
+
 
     renderData = () => {
         if (activeIndex === 0) {
@@ -74,11 +81,59 @@ const ProfileTab = ({navigation}) => {
             );
         } else if (activeIndex === 1) {
             return (
-                <View style={{flex: 1}}>
-                    <InstagramCard imageSource="img1" likes="200" />
-                    <InstagramCard imageSource="img2" likes="350" />
-                    <InstagramCard imageSource="img3" likes="400" />
-                </View>
+                // <View style={{flex: 1}}>
+                //     <InstagramCard imageSource="img1" likes="200" />
+                //     <InstagramCard imageSource="img2" likes="350" />
+                //     <InstagramCard imageSource="img3" likes="400" />
+                // </View>
+                <ScrollView>
+                        <FlatList
+                            data={cardItems}
+                            keyExtractor = {(item, index) => index.toString()}
+                            renderItem={({item})=>
+                            <InstagramCard
+                                username = {item.username}
+                                location = {item.location}
+                                Thumbnail = {item.Thumbnail}
+                                image = {item.image}
+                                likes = {item.likes}
+                                caption = {item.caption}
+                                showModal = {showModal}
+                                //likePost = {item.likePost}
+                                //addLike = {addLike(item)}
+                                // showComments = {showComments(item)}
+                            />
+                        }
+                        />
+                        <Modal
+                            isVisible={isModalVisible}
+                            onBackdropPress={() => setIsModalVisible(false)}
+                            backdropColor="black"
+                        >
+                            <View style={{alignItems:'flex-start',justifyContent:'flex-start',backgroundColor:'#FFF',borderRadius:5 }}>
+                                <View style={{borderRadius:5}}>
+                                    <Text style={{padding:10}}>
+                                        Report 
+                                    </Text>
+                                    <Text style={{padding:10}}>
+                                        Copy Link
+                                    </Text>
+                                    <Text style={{padding:10}}>
+                                        Turn on post notification
+                                    </Text>
+                                    <Text style={{padding:10}}>
+                                        Share in Whatsapp
+                                    </Text>
+                                    <Text style={{padding:10}}>
+                                        Unfllow
+                                    </Text>
+                                    <Text style={{padding:10}}>
+                                        Mute
+                                    </Text>
+                                </View>
+                            </View>
+                        </Modal>
+                </ScrollView>
             );
         } else if (activeIndex === 2) {
             return (

@@ -4,6 +4,7 @@ import Direct from './Direct';
 import HomeTab from '../screens/HomeTab';
 import CameraBottomTabNavigator from './CameraBottomTabNavigator'
 import Chat from './Chat'
+import Comment from './Comment';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ const HomeNavigator = () => {
             <Stack.Screen name="Camera" component={CameraBottomTabNavigator}/>
             <Stack.Screen name="Direct" component={Direct}/>
             <Stack.Screen name="Chat" component={Chat}/>
+            <Stack.Screen name="Comment" component={Comment}/>
         </Stack.Navigator>
      );
 }
