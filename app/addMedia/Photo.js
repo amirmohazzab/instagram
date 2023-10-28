@@ -1,5 +1,5 @@
-import React from 'react'
-import {View, Image} from 'react-native'
+import React, {useState} from 'react'
+import {View, Image, TouchableOpacity} from 'react-native'
 import {Header} from 'react-native-elements'
 import {Dimensions} from 'react-native';
 import {MaterialIcons, Ionicons, AntDesign} from 'react-native-vector-icons';
@@ -9,6 +9,8 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 
 const Photo = ({navigation}) => {
+
+    
     return ( 
         <View style={{flex: 1, justifyContent: "flex-start", alignItems: "center"}}>
             <Header
@@ -29,7 +31,9 @@ const Photo = ({navigation}) => {
                     <Ionicons name="ios-flash" size={35} style={{color:'white', position: 'absolute', right: 10, bottom: 10}} />
                 </View>
                 <View style={{flex:2,backgroundColor:'#FFF',justifyContent:'center',alignItems:'center'}}>
-                    <View style={{width:75,height:75,borderRadius:37.5,borderWidth:10,borderColor:'#F1F1F1'}} />
+                    <TouchableOpacity onPress={() => navigation.navigate('AddMediaTabNavigator')} 
+                                    style={{width:75,height:75,borderRadius:37,borderWidth:10,borderColor:'#F1F1F1'}}>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

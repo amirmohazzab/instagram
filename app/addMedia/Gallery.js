@@ -1,39 +1,12 @@
 import React, {useState} from 'react'
 import {View, Image, ScrollView, TouchableWithoutFeedback, Text} from 'react-native'
 import {Header} from 'react-native-elements'
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import {Ionicons, AntDesign, Foundation, MaterialIcons} from 'react-native-vector-icons';
+import {imageData} from '../components/data'
 
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
-
-
-const images = [
-    require('../../assets/feed/1.jpg'),
-    require('../../assets/feed/3.jpg'),
-    require('../../assets/feed/4.jpg'),
-    require('../../assets/feed/5.jpg'),
-    require('../../assets/feed/6.jpg'),
-    require('../../assets/feed/7.jpg'),
-    require('../../assets/feed/8.jpg'),
-    require('../../assets/feed/9.jpg'),
-    require('../../assets/feed/10.jpg'),
-    require('../../assets/feed/11.jpg'),
-    require('../../assets/feed/1.jpg'),
-    require('../../assets/feed/3.jpg'),
-    require('../../assets/feed/4.jpg'),
-    require('../../assets/feed/1.jpg'),
-    require('../../assets/feed/3.jpg'),
-    require('../../assets/feed/4.jpg'),
-    require('../../assets/feed/5.jpg'),
-    require('../../assets/feed/6.jpg'),
-    require('../../assets/feed/7.jpg'),
-    require('../../assets/feed/8.jpg'),
-    require('../../assets/feed/9.jpg'),
-    require('../../assets/feed/10.jpg'),
-];
-
-
 
 
 const Gallery = ({navigation}) => {
@@ -43,7 +16,7 @@ const Gallery = ({navigation}) => {
 
 
     renderGallery = () => {
-        return images.map((image, index) => {
+        return imageData.map((image, index) => {
             return (
                 <View
                     key={index}
@@ -112,7 +85,7 @@ const Gallery = ({navigation}) => {
             />
             <View style={{flex: 1, backgroundColor: "FFF"}}>
                 {renderBox()}
-                <View style={{height: screenHeight/2, width: screenWidth}}>
+                <View style={{height: screenHeight/2, width: screenWidth, backgroundColor: 'transparent'}}>
                     <Image 
                         source={source}
                         style={{width: "100%", height: "100%"}}

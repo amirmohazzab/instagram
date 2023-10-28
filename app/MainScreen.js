@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Foundation, Ionicons, AntDesign} from '@expo/vector-icons'
 import ProfileNavigator from './Profile/ProfileNavigator';
 import LikeTabNavigator from './Like/LikeTabNavigator'
-import addMediaBottomTabNavigator from './addMedia/AddMediaBottomTabNavigator'
+import AddMediaBottomTabNavigator from './addMedia/AddMediaBottomTabNavigator'
 import SearchNavigator from './search/SearchNavigator'
 import HomeNavigator from './Home/HomeNavigator';
 
@@ -46,7 +46,7 @@ const MainScreen = () => {
                 }}
             />
             <Tab.Screen 
-                name="addMediaNav" component={addMediaBottomTabNavigator} 
+                name="addMediaNav" component={AddMediaBottomTabNavigator} 
                 options={{
                     tabBarIcon: ({ color, size }) => (
                       <Ionicons name="add-circle" color={color} size={size} />

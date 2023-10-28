@@ -8,28 +8,30 @@ const Tab = createBottomTabNavigator();
 
 const CameraBottomTabNavigator = ({navigation}) => {
 
-    // navigation.setOptions({
-    //   tabBarStyle: {display: 'none'}
-    // });
+    navigation.setOptions({
+      tabBarStyle: {display: 'none'}
+    });
 
     // CameraBottomTabNavigator.navigationOptions({
     //   tabBarVisible: {dis}
 
     // })
 
-    CameraBottomTabNavigator.navigationOptions=(navigation)=>{
+    // CameraBottomTabNavigator.navigationOptions=(navigation)=>{
       
-        tabBarVisible=false;
+    //     tabBarVisible=false;
       
-    }
+    // }
 
     return ( 
       <Tab.Navigator 
         initialRouteName="Type"
+        backBehavior = 'previousTab'
         //swipeEnabled={false}
         //scrollEnabled: true,
     
         screenOptions={{
+          tabBarScrollEnabled: true,
           headerShown: false,
           tabBarIconStyle: { display: "none" },
           tabBarLabelStyle: {

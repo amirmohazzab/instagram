@@ -1,22 +1,19 @@
 import React from 'react'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Video from './Video'
-import Gallery from './Gallery'
-import PhotoNavigator from './PhotoNavigator'
+import {createBottomTabNavigator, View, Image} from '@react-navigation/bottom-tabs'
+import EditImage from './EditImage'
+import FilterImage from './FilterImage'
+import {Dimensions} from 'react-native';
 
+const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 const Tab = createBottomTabNavigator();
 
-const AddMediaBottomTabNavigator = ({navigation}) => {
-
-
-    navigation.setOptions({
-      tabBarStyle: {display: 'none'}
-    });
+const AddMediaTabNavigator = ({navigation}) => {
     
     return ( 
+     
         <Tab.Navigator 
-          initialRouteName="Video"
+          initialRouteName="Filter"
           backBehavior = 'previousTab'
           screenOptions={{
             tabBarLabelStyle: {
@@ -32,11 +29,13 @@ const AddMediaBottomTabNavigator = ({navigation}) => {
             }
           }}
         >
-          <Tab.Screen name="Video" component={Video} />
-          <Tab.Screen name="Photo" component={PhotoNavigator} />
-          <Tab.Screen name="Gallery" component={Gallery} />
+          
+
+          <Tab.Screen name="Filter" component={FilterImage} />
+          <Tab.Screen name="Edit" component={EditImage} />
         </Tab.Navigator>
+          
       );
     };
  
-export default AddMediaBottomTabNavigator;
+export default AddMediaTabNavigator;

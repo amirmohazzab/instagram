@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import { View, Text, Switch } from 'react-native';
+import { View, Text, Switch} from 'react-native';
 import {Header} from 'react-native-elements'
 import {FontAwesome, Entypo} from '@expo/vector-icons'
 import { Dimensions} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -10,6 +11,11 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 const Setting = ({navigation}) => {
 
     const [switchValue, setSwitchValue] = useState();
+
+    const signOutAsync = async() => {
+        await AsyncStorage.clear();
+        navigation.navigate('Auth', {replace: true})
+    }
 
     return ( 
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
@@ -50,14 +56,15 @@ const Setting = ({navigation}) => {
                     <Text style={{fontSize: 18, marginLeft: 20, color: "grey"}}> Saved </Text>
                 </View>
                 <View style={{flexDirection: "row", alignItems: 'center', marginLeft: 10, paddingVertical: 20}}>
-                    <Text style={{fontSize: 18, marginLeft: 20, color: "grey"}}> Payments </Text>
+                    <Text style={{fontSize: 18, marginLeft: 20, color: "dodgerblue"}} onPress={signOutAsync}> Logout </Text>
                 </View>
                 <View style={{flexDirection: "row", alignItems: 'center', marginLeft: 10, paddingVertical: 20, justifyContent: "space-between", width: "90%"}}>
                     <Text style={{fontSize: 18, marginLeft: 20, color: "grey"}}> Private Account </Text>
                     <Switch
                         value={switchValue}
                         onValueChange={() => setSwitchValue(!switchValue)}
-                        onTintColor="blue" thumTintColor="white"
+                        onTintColor="blue" 
+                        thumTintColor="white"
                     />
                 </View>
             </View>

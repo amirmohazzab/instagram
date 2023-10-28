@@ -59,3 +59,30 @@ export const dataSet = [
         likePost:false,
       },
 ];
+
+
+
+export const imageData = [
+  require('../../assets/feed/1.jpg'),
+  require('../../assets/feed/3.jpg'),
+  require('../../assets/feed/4.jpg'),
+  require('../../assets/feed/5.jpg'),
+  require('../../assets/feed/6.jpg'),
+  require('../../assets/feed/7.jpg'),
+  require('../../assets/feed/8.jpg'),
+  require('../../assets/feed/9.jpg'),
+  require('../../assets/feed/10.jpg'),
+  require('../../assets/feed/11.jpg'),
+  require('../../assets/feed/1.jpg'),
+  require('../../assets/feed/3.jpg'),
+  require('../../assets/feed/4.jpg'),
+  require('../../assets/feed/1.jpg'),
+  require('../../assets/feed/3.jpg'),
+  require('../../assets/feed/4.jpg'),
+  require('../../assets/feed/5.jpg'),
+  require('../../assets/feed/6.jpg'),
+  require('../../assets/feed/7.jpg'),
+  require('../../assets/feed/8.jpg'),
+  require('../../assets/feed/9.jpg'),
+  require('../../assets/feed/10.jpg'),
+];

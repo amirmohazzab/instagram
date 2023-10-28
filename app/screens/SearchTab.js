@@ -1,62 +1,53 @@
-import React from 'react'
-import { View, ScrollView, SafeAreaView, Image, Text} from 'react-native';
+import React, {useState} from 'react'
+import { View, ScrollView, SafeAreaView, Image, Text, TouchableWithoutFeedback} from 'react-native';
 import {Header} from 'react-native-elements'
 import { Ionicons, MaterialIcons, AntDesign} from '@expo/vector-icons';
 import {Dimensions} from 'react-native';
+import Modal from 'react-native-modal';
+import ImageElement from '../search/ImageElement';
 import ImageStories from './../components/ImageStories';
+import {imageData} from '../components/data'
+
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
-const images = [
-    require('../../assets/feed/1.jpg'),
-    require('../../assets/feed/3.jpg'),
-    require('../../assets/feed/4.jpg'),
-    require('../../assets/feed/5.jpg'),
-    require('../../assets/feed/6.jpg'),
-    require('../../assets/feed/7.jpg'),
-    require('../../assets/feed/8.jpg'),
-    require('../../assets/feed/9.jpg'),
-    require('../../assets/feed/10.jpg'),
-    require('../../assets/feed/11.jpg'),
-    require('../../assets/feed/1.jpg'),
-    require('../../assets/feed/3.jpg'),
-    require('../../assets/feed/4.jpg'),
-    require('../../assets/feed/1.jpg'),
-    require('../../assets/feed/3.jpg'),
-    require('../../assets/feed/4.jpg'),
-    require('../../assets/feed/5.jpg'),
-    require('../../assets/feed/6.jpg'),
-    require('../../assets/feed/7.jpg'),
-    require('../../assets/feed/8.jpg'),
-    require('../../assets/feed/9.jpg'),
-    require('../../assets/feed/10.jpg'),
-];
+
 
 const SearchTab = ({navigation}) => {
 
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalImage, setModalImage] = useState(require('../../assets/posts/1.jpg'));
+    const [images, setImages] = useState(imageData);
+
+    const modalImageVisible = (visible, imageKey) => {
+        setModalImage(imageData[imageKey]);
+        setModalVisible(visible);
+    }
+
     renderSectionOne = () => {
-        return images.map((image, index) => {
+        return imageData.map((image, index) => {
             return (
-                <View
-                    key={index}
-                    style={[
-                        { width: screenWidth / 3 },
-                        { height: screenWidth / 3 },
-                        { marginBottom: 2 },
-                        index % 3 !== 0
-                            ? { paddingLeft: 2 }
-                            : { paddingLeft: 0 }
-                    ]}
-                >
-                    <Image
-                        source={image}
-                        style={{
-                            flex: 1,
-                            width: undefined,
-                            height: undefined
-                        }}
-                    />
-                </View>
+                <TouchableWithoutFeedback key={index} onLongPress={() => modalImageVisible(true, index)}>
+                    <View
+                        style={[
+                            { width: screenWidth / 3 },
+                            { height: screenWidth / 3 },
+                            { marginBottom: 2 },
+                            index % 3 !== 0
+                                ? { paddingLeft: 2 }
+                                : { paddingLeft: 0 }
+                        ]}
+                    >
+                        <Image
+                            source={image}
+                            style={{
+                                flex: 1,
+                                width: undefined,
+                                height: undefined
+                            }}
+                        />
+                    </View>
+                </TouchableWithoutFeedback>
             );
         });
     };
@@ -161,6 +152,16 @@ const SearchTab = ({navigation}) => {
                     </View>
                     <ScrollView>  
                         <View style={{flex: 1, backgroundColor:'#FFF', flexDirection: "row", flexWrap: "wrap", marginTop: 2 }}>
+                            <Modal 
+                                isVisible={modalVisible}
+                                onBackdropPress={() => setModalVisible(false)}
+                                backgroundColor="black"
+                                style={{flex:1, backgroundColor:'transparent'}}
+                            >
+                                <View style={{ flex:1, backgroundColor:'transparent'}}>
+                                    <ImageElement ImageSource={modalImage} />
+                                </View>
+                            </Modal>
                             {renderSectionOne()}
                         </View>
                     </ScrollView>
